@@ -1,0 +1,52 @@
+<link rel="import" href="../bower_components/polymer/polymer.html"> 
+<link rel="import" href="elementos.html"> 
+<polymer-element name="app-element">
+  <template>
+  <link rel="stylesheet" href="app.css"> 
+    <core-drawer-panel>
+      <core-header-panel drawer>
+	<core-toolbar></core-toolbar>
+      </core-header-panel>
+      <core-header-panel main>
+	<core-toolbar>
+	  <paper-icon-button icon="menu" core-drawer-toggle></paper-icon-button>
+	</core-toolbar>
+	<div class="ipv4">
+	  <paper-input-decorator  label="Número de Red" floatinglabel layout vertical error="Debes Escribir un numero" isInvalid="{{!$.red.validity.valid}}">
+	    <input id="red" value="{{red}}" on-focus={{prueba0}} pattern="[0-9]*" on-change="{{prueba}}"></input>
+	  </paper-input-decorator>
+	  <br>
+	  <paper-input label="Número de Número de Subred" floatinglabel layout vertical value="{{subred}}"></paper-input>
+	  <br>
+	  <label>{{bits_subred}} bits de subred</label>
+	  <br>
+	  <paper-slider min="0" max="32" pin snaps step="1" on-change="{{cambiar_bits}}" flex></paper-slider>
+	  <paper-input label="Número de Host" floatinglabel layout vertical value="{{host}}"></paper-input>
+	</div>
+      </core-header-panel>
+    </core-drawer-panel>
+  </template>
+  <script>
+    Polymer('app-element',{
+    red:null,
+    subred:null,
+    bits_subred:0,
+    host:null,
+    ready: function() {      
+    },
+    cambiar_bits: function(e){
+    this.bits_subred=e.target.value;
+    },
+    prueba0:function(e){
+    if(this.red==null)
+      e.target.value=0
+    else
+    e.target.value=this.red;
+    }
+    ,
+    prueba:function(e){
+    this.red=e.target.value;
+    }
+    });
+  </script>
+</polymer-element>
