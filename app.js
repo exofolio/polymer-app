@@ -16,16 +16,21 @@ Polymer('app-element',{
       e.target.value=0
     else
     e.target.value=this.red;
-    }
-    ,
+    },
+    ipv4:function(){
+      this.ip= 'IPv4';
+    },
+    ipv6:function(){
+      this.ip= 'IPv6';
+    },
     prueba:function(e){
     this.red=e.target.value;
     },
     calcula: function(){
       if(this.pagina==0)
-	this.ip= 'Funciona IPv4';
+	this.ipv4();
       else
-	this.ip= 'Funciona IPv6';
+	this.ipv6();
 	
       //this.$.dialogo.toggle();
     },
