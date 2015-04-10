@@ -16,9 +16,10 @@
 	  <paper-icon-button icon="menu" core-drawer-toggle></paper-icon-button>
 	  <div>{{titulo}}</div>
 	</core-toolbar>
-	<core-pages selected="{{pagina}}">
+	<core-animated-pages selected="{{pagina}}" transitions="cross-fade">
+	<section>
 	<div layout vertical center>
-	<div class="ipv4">
+	<div class="ipv4" cross-fade>
 	  <paper-input-decorator  label="Número de Red" floatinglabel layout vertical error="Debes Escribir un numero" isInvalid="{{!$.red.validity.valid}}">
 	    <input id="red" value="{{red}}" on-focus={{prueba0}} pattern="[0-9]*" on-change="{{prueba}}"></input>
 	  </paper-input-decorator>
@@ -39,10 +40,12 @@
 	  </paper-dialog>
 	  </section>
 	</div>
+	</section>
+	<section>
 	<div layout vertical center>
-	<div class="ipv6">
-	  <paper-input-decorator  label="Número de Red" floatinglabel layout vertical error="Debes Escribir un numero" isInvalid="{{!$.red.validity.valid}}">
-	    <input id="red" value="{{red}}" on-focus={{prueba0}} pattern="[0-9]*" on-change="{{prueba}}"></input>
+	<div class="ipv6" cross-fade>
+	  <paper-input-decorator  label="MAC" floatinglabel layout vertical error="Solo Mayusculas" isInvalid="{{!$.red.validity.valid}}">
+	    <input id="red" value="{{red}}" on-focus={{prueba0}} pattern="*[0-9][A-Z]" on-change="{{prueba}}"></input>
 	  </paper-input-decorator>
 	  <br>
 	  <paper-input label="Número de Número de Subred" floatinglabel layout vertical value="{{subred}}"></paper-input>
@@ -60,7 +63,8 @@
 	</div>
 	</div>
 	  </section>
-	</core-pages>
+	</section>
+	</core-animated-pages>
 	  <paper-button icon="check" id="calcular" on-tap="{{calcula}}">Calcular</paper-button>
       </core-header-panel>
     </core-drawer-panel>
